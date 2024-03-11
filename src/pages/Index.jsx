@@ -7,9 +7,9 @@ const Index = () => {
 
   // Placeholder data for car and bakkie accessories
   const products = [
-    { id: 1, name: "Car Cover", price: "199.99", image: 'https://images.unsplash.com/photo-1586920749875-2a3c3bf9f279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxjYXIlMjBjb3ZlcnxlbnwwfHx8fDE3MTAxMzg5MDN8MA&ixlib=rb-4.0.3&q=80&w=1080' },
-    { id: 2, name: "Steering Wheel Cover", price: "49.99", image: 'https://images.unsplash.com/photo-1694648827693-1b9fcc81c556?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxzdGVlcmluZyUyMHdoZWVsJTIwY292ZXJ8ZW58MHx8fHwxNzEwMTM4OTA0fDA&ixlib=rb-4.0.3&q=80&w=1080' },
-    { id: 3, name: "Air Freshener", price: "5.99", image: 'https://images.unsplash.com/photo-1599800343870-f8bf5e266732?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxhaXIlMjBmcmVzaGVuZXJ8ZW58MHx8fHwxNzEwMTM4OTA0fDA&ixlib=rb-4.0.3&q=80&w=1080' },
+    { id: 1, name: "Car Cover", price: "199.99", image: "https://images.unsplash.com/photo-1586920749875-2a3c3bf9f279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxjYXIlMjBjb3ZlcnxlbnwwfHx8fDE3MTAxMzg5MDN8MA&ixlib=rb-4.0.3&q=80&w=1080" },
+    { id: 2, name: "Steering Wheel Cover", price: "49.99", image: "https://images.unsplash.com/photo-1694648827693-1b9fcc81c556?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxzdGVlcmluZyUyMHdoZWVsJTIwY292ZXJ8ZW58MHx8fHwxNzEwMTM4OTA0fDA&ixlib=rb-4.0.3&q=80&w=1080" },
+    { id: 3, name: "Air Freshener", price: "5.99", image: "https://images.unsplash.com/photo-1599800343870-f8bf5e266732?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxhaXIlMjBmcmVzaGVuZXJ8ZW58MHx8fHwxNzEwMTM4OTA0fDA&ixlib=rb-4.0.3&q=80&w=1080" },
     // Add more products as needed
   ];
 
@@ -20,7 +20,15 @@ const Index = () => {
 
   return (
     <Flex direction="column" align="center" p={5}>
-      <Heading mb={10}>Car & Bakkie Accessories Shop</Heading>
+      <Heading mb={10} color="brand.900">
+        FUNKS CUSTOM SHOP
+      </Heading>
+      <Text mb={5} fontSize="lg" color="brand.800">
+        Need assistance?{" "}
+        <Link href="https://wa.me/630098121" isExternal color="green.500">
+          WhatsApp us
+        </Link>
+      </Text>
 
       <Flex mb={5} align="center">
         <Input placeholder="Search for accessories..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -31,7 +39,7 @@ const Index = () => {
 
       <Grid templateColumns="repeat(3, 1fr)" gap={6} mb={10}>
         {products.map((product) => (
-          <Box key={product.id} borderWidth="1px" borderRadius="lg" overflow="hidden" p={4}>
+          <Box key={product.id} borderWidth="1px" borderRadius="lg" overflow="hidden" p={4} bgGradient="linear(to-r, brand.900, brand.700)">
             <Image src={product.image} alt={product.name} />
             <Heading size="md" my="2">
               {product.name}
@@ -45,10 +53,20 @@ const Index = () => {
       </Grid>
 
       <Flex align="center" mb={5}>
-        <Button rightIcon={<FaCreditCard />} colorScheme="green">
-          Checkout with Ozow
-        </Button>
-        <Text ml={3}>Secure and easy payment processing</Text>
+        <Flex direction="column" align="center" mb={5}>
+          <Button rightIcon={<FaCreditCard />} colorScheme="green" mb={3}>
+            Checkout with Ozow
+          </Button>
+          <Text mb={1}>Secure and easy payment processing</Text>
+          <Button rightIcon={<FaCreditCard />} colorScheme="blue" mb={3}>
+            Pay with Visa (SA)
+          </Button>
+          <Text mb={1}>South African Visa card payments</Text>
+          <Button rightIcon={<FaCreditCard />} colorScheme="blue">
+            Pay with Visa (International)
+          </Button>
+          <Text>International Visa card payments</Text>
+        </Flex>
       </Flex>
 
       <Box as="footer" mt="auto">
